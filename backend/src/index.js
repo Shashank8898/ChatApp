@@ -11,6 +11,8 @@ const PORT = process.env.PORT;
 
 const app = express()
 
+app.use(express.json())                             //A middleware that allows us to extract data from req.body
+
 //Authorization Route
 app.use("/api/auth",authRoutes)
 
