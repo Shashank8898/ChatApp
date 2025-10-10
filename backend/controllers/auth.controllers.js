@@ -4,8 +4,6 @@ import {generateToken} from "../lib/utils.js"
 import cloudinary from '../lib/cloudinary.js';
 
 export const signup = async(req,res)=>{
-    
-    
     const {fullName,email,password} = req.body
     
     try{
@@ -32,8 +30,8 @@ export const signup = async(req,res)=>{
         
         if(newUser){
             //Generate new jwt token here
-            generateToken(newUser._id,res)
             await newUser.save();
+            generateToken(newUser._id,res)
 
             res.status(201).json({
                 _id:newUser._id,

@@ -29,5 +29,5 @@ app.use("/api/message",messageRoutes)
 
 app.listen(PORT,()=>{
     console.log(`Backend is online on port ${PORT}`)
-    connectDB;
+    connectDB();
 }) 
