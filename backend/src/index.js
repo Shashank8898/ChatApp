@@ -3,6 +3,8 @@ dotenv.config();
 import express from 'express';
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser"
+import cors from "cors";
+
 
 import {connectDB} from "../lib/db.js"
 //Importing Routes
@@ -15,6 +17,11 @@ const app = express()
 
 app.use(express.json())                             //A middleware that allows us to extract data from req.body
 app.use(cookieParser());                            //To allow retrieval of jwt tokens from cookiess
+app.use(cors({
+    origin:"http://localhost:5173",
+    credentials:true
+}))
+
 
 //Authorization Route
 app.use("/api/auth",authRoutes)
