@@ -5,7 +5,7 @@ import express from "express";
 const app = express();
 const server = http.createServer(app);
 
-const io = new Server(server, {
+const io = new Server(server, {                   //Setting up socket server
   cors: {
     origin: ["http://localhost:5173"],
   },
@@ -18,7 +18,7 @@ export function getReceiverSocketId(userId) {
 // used to store online users
 const userSocketMap = {}; // {userId: socketId}
 
-io.on("connection", (socket) => {
+io.on("connection", (socket) => {                       //When a user just connects
   console.log("A user connected", socket.id);
 
   const userId = socket.handshake.query.userId;
@@ -27,7 +27,7 @@ io.on("connection", (socket) => {
   // io.emit() is used to send events to all the connected clients
   io.emit("getOnlineUsers", Object.keys(userSocketMap));
 
-  socket.on("disconnect", () => {
+  socket.on("disconnect", () => {                                         //Socket's disconnect event
     console.log("A user disconnected", socket.id);
     delete userSocketMap[userId];
     io.emit("getOnlineUsers", Object.keys(userSocketMap));
