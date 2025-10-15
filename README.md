@@ -1,1 +1,1 @@
-
+ChatApp – A real-time messaging web application featuring end-to-end encryption (E2EE) to ensure complete message privacy. Built with Node.js, Express, Socket.io, and MongoDB, enabling secure, instant communication with user authentication and encrypted message storage.
